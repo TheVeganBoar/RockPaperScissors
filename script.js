@@ -14,21 +14,20 @@ function computerPlay() {
     return n
 }
 
-var computerSelection = computerPlay();
-var playerSelection = prompt ("Rock, Paper or Scissors?");
-    playerSelection = playerSelection.toLowerCase();
-
 function roundPlay (playerSelection, computerSelection) {
+    playerSelection = prompt ("Rock, Paper or Scissors?");
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerPlay();
     round = +1;
     
-    if (playerSelection == 'rock' && computerSelection == 'paper' ||
-        playerSelection == 'paper' && computerSelection == 'scissors' ||
-        playerSelection == 'scissors' && computerSelection == 'rock') {
+    if ((playerSelection == 'rock' && computerSelection == 'paper') ||
+        (playerSelection == 'paper' && computerSelection == 'scissors') ||
+        (playerSelection == 'scissors' && computerSelection == 'rock')) {
             computerScore = +1;
             return "You Lose!"
-    } else if (playerSelection == 'rock' && computerSelection == 'scissors' ||
-    playerSelection == 'paper' && computerSelection == 'rock' ||
-    playerSelection == 'scissors' && computerSelection == 'paper') {
+    } else if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
+    (playerSelection == 'paper' && computerSelection == 'rock') ||
+    (playerSelection == 'scissors' && computerSelection == 'paper')) {
             playerScore = +1;
             return "You Win!"
     } else {
@@ -37,5 +36,16 @@ function roundPlay (playerSelection, computerSelection) {
 }
 
 function game() {
-    roundPlay ()
+    roundPlay ();
+
+    if (playerScore > computerScore) {
+        return "Congratulations! You won the game!"
+    } else  {
+        "Game over. Try next time."
+    }
 }
+
+for (round = 0; round < 5; round++) {
+    game ();
+ }
+
