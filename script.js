@@ -15,20 +15,21 @@ function computerPlay() {
 }
 
 function roundPlay (playerSelection, computerSelection) {
-    playerSelection = prompt ("Rock, Paper or Scissors?");
-    playerSelection = playerSelection.toLowerCase();
+    computerPlay();
     computerSelection = computerPlay();
-    round = +1;
+    playerSelection = prompt ('Rock, Paper or Scissors?');
+    playerSelection = playerSelection.toLowerCase();
+    round += 1;
     
-    if ((playerSelection == 'rock' && computerSelection == 'paper') ||
-        (playerSelection == 'paper' && computerSelection == 'scissors') ||
-        (playerSelection == 'scissors' && computerSelection == 'rock')) {
-            computerScore = +1;
+    if ((playerSelection == 'rock') && (computerSelection == 'paper') ||
+        (playerSelection == 'paper') && (computerSelection == 'scissors') ||
+        (playerSelection == 'scissors') && (computerSelection == 'rock')) {
+            computerScore += 1;
             return "You Lose!"
-    } else if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
-    (playerSelection == 'paper' && computerSelection == 'rock') ||
-    (playerSelection == 'scissors' && computerSelection == 'paper')) {
-            playerScore = +1;
+    } else if ((playerSelection == 'rock') && (computerSelection == 'scissors') ||
+    (playerSelection == 'paper') && (computerSelection == 'rock') ||
+    (playerSelection == 'scissors') && (computerSelection == 'paper')) {
+            playerScore += 1;
             return "You Win!"
     } else {
             return "It's a tie!"
@@ -36,16 +37,18 @@ function roundPlay (playerSelection, computerSelection) {
 }
 
 function game() {
-    roundPlay ();
+    roundPlay();
+    roundPlay();
+    roundPlay();
+    roundPlay();
+    roundPlay();
 
-    if (playerScore > computerScore) {
-        return "Congratulations! You won the game!"
-    } else  {
-        "Game over. Try next time."
+    if (playerScore > 2) {
+        console.log ("Congratulations! You won!")
+    } else {
+        console.log ("Game Over.")
     }
 }
 
-for (round = 0; round < 5; round++) {
-    game ();
- }
+
 
